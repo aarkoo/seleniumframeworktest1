@@ -21,6 +21,8 @@ public class BaseTest {
 
 	private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 	protected ConfigReader configReader;
+	
+
 
 	// Each test owns its browser session, which keeps suite state isolated.
 	@BeforeMethod(alwaysRun = true)
@@ -32,6 +34,7 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		ExtentReportManager.info("Browser launched and window maximized");
 		loginToApplication();
+		System.out.println("started session");
 	}
 
 	private WebDriver createDriver() {
@@ -110,4 +113,6 @@ public class BaseTest {
 			DRIVER.remove();
 		}
 	}
+	
+	
 }
