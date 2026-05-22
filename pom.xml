@@ -14,6 +14,8 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+
+        <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Java Version -->
@@ -24,10 +26,16 @@
         <browser>chrome</browser>
         <headless>false</headless>
 
+        <!-- SonarCloud Configuration -->
+        <sonar.organization>aarkoo</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>aarkoo_seleniumframeworktest1</sonar.projectKey>
+
         <!-- Dependency Versions -->
-        <selenium.version>4.43.0</selenium.version>
+        <selenium.version>4.33.0</selenium.version>
         <testng.version>7.12.0</testng.version>
         <extentreports.version>5.1.1</extentreports.version>
+
     </properties>
 
     <dependencies>
@@ -47,7 +55,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Extent Report -->
+        <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
@@ -57,9 +65,10 @@
     </dependencies>
 
     <build>
+
         <plugins>
 
-            <!-- Java Compiler Plugin -->
+            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -71,7 +80,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Test Execution Plugin -->
+            <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -79,12 +88,12 @@
 
                 <configuration>
 
-                    <!-- TestNG XML -->
+                    <!-- TestNG Suite -->
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
-                    <!-- Runtime Variables -->
+                    <!-- Runtime Parameters -->
                     <systemPropertyVariables>
                         <browser>${browser}</browser>
                         <headless>${headless}</headless>
@@ -93,14 +102,15 @@
                 </configuration>
             </plugin>
 
-            <!-- SonarQube Plugin -->
+            <!-- SonarCloud Maven Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>5.6.0.6792</version>
+                <version>5.1.0.4751</version>
             </plugin>
 
         </plugins>
+
     </build>
 
 </project>
